@@ -1,27 +1,34 @@
 const express = require('express');
 
-const app = express();
+app = express();
 
 // GET
 app.get('/', (req, res)=>{
-    res.send("Home page route")
-});
-
+    // Simple String response using send() and end() methods;
+    res.send("Home page loaded");
+    // res.end("Home page loaded");
+})
 // POST
 app.post('/about', (req, res)=>{
-    res.send("About page route")
+    // Simple String response using send() and end() methods;
+    res.send("About page loaded");
+    // res.end("About page loaded");
 })
-
-//PUT
+// PUT
 app.put('/contact', (req, res)=>{
-    res.send("Contact page route")
+    // Simple String response using send() and end() methods;
+    res.send("Contact page loaded");
+    // res.end("Contact page loaded");
 })
-
-//DELETE
+// DELETE
 app.delete('/terms', (req, res)=>{
-    res.send("Terms page route")
+    // Simple String response using send() and end() methods;
+    res.send("Terms and Condition page loaded");
+    // res.end("Terms and Condition page loaded");
 })
 
 app.listen(8000, ()=>{
-    console.log('Server is run on port localhost:80000');
+    console.log("Server is run on port :8000");
 })
+
+
