@@ -2,6 +2,7 @@ const express = require('express');
 
 app = express();
 
+// ************* Work with Response Start ********************
 // GET **************************************
 app.get('/', (req, res)=>{
     // Simple String response using send() and end() methods;
@@ -72,7 +73,6 @@ app.get('/cookie_clear', (req, res)=>{
 })
 
 
-
 // POST **************************************
 app.post('/about', (req, res)=>{
     // Simple String response using send() and end() methods;
@@ -91,6 +91,33 @@ app.delete('/terms', (req, res)=>{
     res.send("Terms and Condition page loaded");
     // res.end("Terms and Condition page loaded");
 })
+
+// ************* Work with Response End ********************
+
+
+
+// ************* Work with Request Handler Start ********************
+// GET REQUEST
+app.get('/req_1', (req, res)=>{
+    let firstName = req.query.firstName;
+    let lastName = req.query.lastName;
+
+    res.end(firstName + " " + lastName);
+})
+
+
+// POST REQUEST
+
+
+
+// PUT REQUEST
+// DELETE REQUEST
+
+
+
+
+// ************* Work with Request End ********************
+
 
 app.listen(8000, ()=>{
     console.log("Server is run on port :8000");
