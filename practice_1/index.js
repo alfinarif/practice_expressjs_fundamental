@@ -105,8 +105,35 @@ app.get('/req_1', (req, res)=>{
     res.end(firstName + " " + lastName);
 })
 
+app.get('/req_2', (req, res)=>{
+    let firstName = req.header('firstName');
+    let lastName = req.header('lastName');
+    res.end(firstName + ' ' + lastName + ' user: ' + req.header('User-Agent')
+    );
+})
+
 
 // POST REQUEST
+app.post('/req_3', (req, res)=>{
+    res.send('Simple post request');
+})
+
+// post request with url query
+app.post('/req_4', (req, res)=>{
+    let fname = req.query.fname;
+    let lname = req.query.lname;
+    res.end(fname +' '+ lname);
+
+})
+
+// header
+app.post('/req_5', (req, res)=>{
+    let username = req.header('username');
+    let password  = req.header('password');
+
+    res.end(`Username: ${username} and Password: ${password}`);
+
+})
 
 
 
