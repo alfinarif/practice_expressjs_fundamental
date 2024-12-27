@@ -1,35 +1,35 @@
 const express = require('express');
 const multer = require('multer');
 
+
 const app = express();
 
-
-
-// File uploading using multer npm package;
-let storage = multer.diskStorage({
+// created storage
+const storage = multer.diskStorage({
     destination: (req, file, callBack)=>{
-        callBack(null, './upload')
+        callBack(null, './upload');
     },
     filename: (req, file, callBack)=>{
-        callBack(null, file.originalname)
+        callBack(null, file.originalname);
     }
-}); // storage end
+});
 
-let upload = multer({storage: storage}).single("my_file");
+const upload = multer({storage: storage}).single('file');
+
 app.post('/', (req, res)=>{
-    upload(req, res, (error)=>{
-        if (error){
-            res.send(error);
-        }else{
-            res.send('File uploaded successfully');
+    upload(req, res, (err)=>{
+        if(err){
+            console.log('Something is went wrong!');
+            res.end('Something is went wrong!')
+        }else {
+            console.log('File has been uploaded successfully');
+            res.send('File has been uploaded successfully');
         }
     })
 })
 
 
 
-
-
 app.listen(8000, ()=>{
-    console.log('Server is run on post :8000');
+    console.log('Server is running on port :8000');
 })
