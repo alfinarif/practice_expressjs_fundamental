@@ -1,6 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const multerInstent = require('multer');
+
+const multer = multerInstent();
 
 app = express();
+app.use(bodyParser.json());
+app.use(multer.array());
+app.use(express.static('public'));
 
 // ************* Work with Response Start ********************
 // GET **************************************
@@ -135,6 +142,32 @@ app.post('/req_5', (req, res)=>{
 
 })
 
+// JSON request handling
+// const myJsonObject = [
+//     {name: 'Alfin', city: 'Cumilla', team: 'DevOps'},
+//     {name: 'Tajul', city: 'Dhaka', team: 'Frontend'},
+//     {name: 'Sharif', city: 'Khulna', team: 'Backend'},
+//     {name: 'Tafhim', city: 'Barisal', team: 'DevOps'},
+// ]
+app.post('/req_6', (req, res)=>{
+    let jsonData = req.body;
+    // let jsonString = JSON.stringify(jsonData);
+    let name = jsonData['name'];
+    let city = jsonData['city'];
+    let team = jsonData['team'];
+
+    let displayFormate = `Name: ${name}, City: ${city}, Team: ${team}`;
+    res.send(displayFormate);
+
+    // res.send(jsonString);
+})
+
+// Multipart form data handling using multer npm package;
+app.post('/req_7', (req, res)=>{
+    let jsonData = req.body;
+    let jsonString = JSON.stringify(jsonData);
+    res.send(jsonString);
+})
 
 
 // PUT REQUEST
